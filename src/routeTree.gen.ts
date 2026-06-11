@@ -9,25 +9,39 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TrustCenterRouteImport } from './routes/trust-center'
 import { Route as TrustRouteImport } from './routes/trust'
 import { Route as StatusRouteImport } from './routes/status'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SecurityRouteImport } from './routes/security'
+import { Route as RegulatorRouteImport } from './routes/regulator'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PartnersRouteImport } from './routes/partners'
+import { Route as NocRouteImport } from './routes/noc'
 import { Route as MerchantsRouteImport } from './routes/merchants'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
+import { Route as IssuingRouteImport } from './routes/issuing'
+import { Route as InvestorRouteImport } from './routes/investor'
 import { Route as GovernmentRouteImport } from './routes/government'
 import { Route as FraudRouteImport } from './routes/fraud'
+import { Route as ExecutiveRouteImport } from './routes/executive'
 import { Route as DocsRouteImport } from './routes/docs'
 import { Route as DevelopersRouteImport } from './routes/developers'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ComplianceRouteImport } from './routes/compliance'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as BanksRouteImport } from './routes/banks'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AcademyRouteImport } from './routes/academy'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TrustCenterRoute = TrustCenterRouteImport.update({
+  id: '/trust-center',
+  path: '/trust-center',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TrustRoute = TrustRouteImport.update({
   id: '/trust',
   path: '/trust',
@@ -48,6 +62,11 @@ const SecurityRoute = SecurityRouteImport.update({
   path: '/security',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RegulatorRoute = RegulatorRouteImport.update({
+  id: '/regulator',
+  path: '/regulator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
   path: '/products',
@@ -63,6 +82,11 @@ const PartnersRoute = PartnersRouteImport.update({
   path: '/partners',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NocRoute = NocRouteImport.update({
+  id: '/noc',
+  path: '/noc',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MerchantsRoute = MerchantsRouteImport.update({
   id: '/merchants',
   path: '/merchants',
@@ -71,6 +95,16 @@ const MerchantsRoute = MerchantsRouteImport.update({
 const MarketplaceRoute = MarketplaceRouteImport.update({
   id: '/marketplace',
   path: '/marketplace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IssuingRoute = IssuingRouteImport.update({
+  id: '/issuing',
+  path: '/issuing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestorRoute = InvestorRouteImport.update({
+  id: '/investor',
+  path: '/investor',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GovernmentRoute = GovernmentRouteImport.update({
@@ -83,6 +117,11 @@ const FraudRoute = FraudRouteImport.update({
   path: '/fraud',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExecutiveRoute = ExecutiveRouteImport.update({
+  id: '/executive',
+  path: '/executive',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DocsRoute = DocsRouteImport.update({
   id: '/docs',
   path: '/docs',
@@ -91,6 +130,11 @@ const DocsRoute = DocsRouteImport.update({
 const DevelopersRoute = DevelopersRouteImport.update({
   id: '/developers',
   path: '/developers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComplianceRoute = ComplianceRouteImport.update({
@@ -113,6 +157,16 @@ const AdminRoute = AdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AcademyRoute = AcademyRouteImport.update({
+  id: '/academy',
+  path: '/academy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -121,151 +175,221 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/academy': typeof AcademyRoute
   '/admin': typeof AdminRoute
   '/banks': typeof BanksRoute
   '/careers': typeof CareersRoute
   '/compliance': typeof ComplianceRoute
+  '/contact': typeof ContactRoute
   '/developers': typeof DevelopersRoute
   '/docs': typeof DocsRoute
+  '/executive': typeof ExecutiveRoute
   '/fraud': typeof FraudRoute
   '/government': typeof GovernmentRoute
+  '/investor': typeof InvestorRoute
+  '/issuing': typeof IssuingRoute
   '/marketplace': typeof MarketplaceRoute
   '/merchants': typeof MerchantsRoute
+  '/noc': typeof NocRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
   '/products': typeof ProductsRoute
+  '/regulator': typeof RegulatorRoute
   '/security': typeof SecurityRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/status': typeof StatusRoute
   '/trust': typeof TrustRoute
+  '/trust-center': typeof TrustCenterRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/academy': typeof AcademyRoute
   '/admin': typeof AdminRoute
   '/banks': typeof BanksRoute
   '/careers': typeof CareersRoute
   '/compliance': typeof ComplianceRoute
+  '/contact': typeof ContactRoute
   '/developers': typeof DevelopersRoute
   '/docs': typeof DocsRoute
+  '/executive': typeof ExecutiveRoute
   '/fraud': typeof FraudRoute
   '/government': typeof GovernmentRoute
+  '/investor': typeof InvestorRoute
+  '/issuing': typeof IssuingRoute
   '/marketplace': typeof MarketplaceRoute
   '/merchants': typeof MerchantsRoute
+  '/noc': typeof NocRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
   '/products': typeof ProductsRoute
+  '/regulator': typeof RegulatorRoute
   '/security': typeof SecurityRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/status': typeof StatusRoute
   '/trust': typeof TrustRoute
+  '/trust-center': typeof TrustCenterRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/academy': typeof AcademyRoute
   '/admin': typeof AdminRoute
   '/banks': typeof BanksRoute
   '/careers': typeof CareersRoute
   '/compliance': typeof ComplianceRoute
+  '/contact': typeof ContactRoute
   '/developers': typeof DevelopersRoute
   '/docs': typeof DocsRoute
+  '/executive': typeof ExecutiveRoute
   '/fraud': typeof FraudRoute
   '/government': typeof GovernmentRoute
+  '/investor': typeof InvestorRoute
+  '/issuing': typeof IssuingRoute
   '/marketplace': typeof MarketplaceRoute
   '/merchants': typeof MerchantsRoute
+  '/noc': typeof NocRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
   '/products': typeof ProductsRoute
+  '/regulator': typeof RegulatorRoute
   '/security': typeof SecurityRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/status': typeof StatusRoute
   '/trust': typeof TrustRoute
+  '/trust-center': typeof TrustCenterRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
+    | '/academy'
     | '/admin'
     | '/banks'
     | '/careers'
     | '/compliance'
+    | '/contact'
     | '/developers'
     | '/docs'
+    | '/executive'
     | '/fraud'
     | '/government'
+    | '/investor'
+    | '/issuing'
     | '/marketplace'
     | '/merchants'
+    | '/noc'
     | '/partners'
     | '/pricing'
     | '/products'
+    | '/regulator'
     | '/security'
     | '/sitemap.xml'
     | '/status'
     | '/trust'
+    | '/trust-center'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
+    | '/academy'
     | '/admin'
     | '/banks'
     | '/careers'
     | '/compliance'
+    | '/contact'
     | '/developers'
     | '/docs'
+    | '/executive'
     | '/fraud'
     | '/government'
+    | '/investor'
+    | '/issuing'
     | '/marketplace'
     | '/merchants'
+    | '/noc'
     | '/partners'
     | '/pricing'
     | '/products'
+    | '/regulator'
     | '/security'
     | '/sitemap.xml'
     | '/status'
     | '/trust'
+    | '/trust-center'
   id:
     | '__root__'
     | '/'
+    | '/about'
+    | '/academy'
     | '/admin'
     | '/banks'
     | '/careers'
     | '/compliance'
+    | '/contact'
     | '/developers'
     | '/docs'
+    | '/executive'
     | '/fraud'
     | '/government'
+    | '/investor'
+    | '/issuing'
     | '/marketplace'
     | '/merchants'
+    | '/noc'
     | '/partners'
     | '/pricing'
     | '/products'
+    | '/regulator'
     | '/security'
     | '/sitemap.xml'
     | '/status'
     | '/trust'
+    | '/trust-center'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AcademyRoute: typeof AcademyRoute
   AdminRoute: typeof AdminRoute
   BanksRoute: typeof BanksRoute
   CareersRoute: typeof CareersRoute
   ComplianceRoute: typeof ComplianceRoute
+  ContactRoute: typeof ContactRoute
   DevelopersRoute: typeof DevelopersRoute
   DocsRoute: typeof DocsRoute
+  ExecutiveRoute: typeof ExecutiveRoute
   FraudRoute: typeof FraudRoute
   GovernmentRoute: typeof GovernmentRoute
+  InvestorRoute: typeof InvestorRoute
+  IssuingRoute: typeof IssuingRoute
   MarketplaceRoute: typeof MarketplaceRoute
   MerchantsRoute: typeof MerchantsRoute
+  NocRoute: typeof NocRoute
   PartnersRoute: typeof PartnersRoute
   PricingRoute: typeof PricingRoute
   ProductsRoute: typeof ProductsRoute
+  RegulatorRoute: typeof RegulatorRoute
   SecurityRoute: typeof SecurityRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StatusRoute: typeof StatusRoute
   TrustRoute: typeof TrustRoute
+  TrustCenterRoute: typeof TrustCenterRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/trust-center': {
+      id: '/trust-center'
+      path: '/trust-center'
+      fullPath: '/trust-center'
+      preLoaderRoute: typeof TrustCenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/trust': {
       id: '/trust'
       path: '/trust'
@@ -294,6 +418,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SecurityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/regulator': {
+      id: '/regulator'
+      path: '/regulator'
+      fullPath: '/regulator'
+      preLoaderRoute: typeof RegulatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/products': {
       id: '/products'
       path: '/products'
@@ -315,6 +446,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PartnersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/noc': {
+      id: '/noc'
+      path: '/noc'
+      fullPath: '/noc'
+      preLoaderRoute: typeof NocRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/merchants': {
       id: '/merchants'
       path: '/merchants'
@@ -327,6 +465,20 @@ declare module '@tanstack/react-router' {
       path: '/marketplace'
       fullPath: '/marketplace'
       preLoaderRoute: typeof MarketplaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/issuing': {
+      id: '/issuing'
+      path: '/issuing'
+      fullPath: '/issuing'
+      preLoaderRoute: typeof IssuingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investor': {
+      id: '/investor'
+      path: '/investor'
+      fullPath: '/investor'
+      preLoaderRoute: typeof InvestorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/government': {
@@ -343,6 +495,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FraudRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/executive': {
+      id: '/executive'
+      path: '/executive'
+      fullPath: '/executive'
+      preLoaderRoute: typeof ExecutiveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/docs': {
       id: '/docs'
       path: '/docs'
@@ -355,6 +514,13 @@ declare module '@tanstack/react-router' {
       path: '/developers'
       fullPath: '/developers'
       preLoaderRoute: typeof DevelopersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/compliance': {
@@ -385,6 +551,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/academy': {
+      id: '/academy'
+      path: '/academy'
+      fullPath: '/academy'
+      preLoaderRoute: typeof AcademyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -397,24 +577,43 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AcademyRoute: AcademyRoute,
   AdminRoute: AdminRoute,
   BanksRoute: BanksRoute,
   CareersRoute: CareersRoute,
   ComplianceRoute: ComplianceRoute,
+  ContactRoute: ContactRoute,
   DevelopersRoute: DevelopersRoute,
   DocsRoute: DocsRoute,
+  ExecutiveRoute: ExecutiveRoute,
   FraudRoute: FraudRoute,
   GovernmentRoute: GovernmentRoute,
+  InvestorRoute: InvestorRoute,
+  IssuingRoute: IssuingRoute,
   MarketplaceRoute: MarketplaceRoute,
   MerchantsRoute: MerchantsRoute,
+  NocRoute: NocRoute,
   PartnersRoute: PartnersRoute,
   PricingRoute: PricingRoute,
   ProductsRoute: ProductsRoute,
+  RegulatorRoute: RegulatorRoute,
   SecurityRoute: SecurityRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StatusRoute: StatusRoute,
   TrustRoute: TrustRoute,
+  TrustCenterRoute: TrustCenterRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
