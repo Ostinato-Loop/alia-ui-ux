@@ -2,10 +2,10 @@ import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 
 const cols: { title: string; links: [string, string][] }[] = [
-  { title: "Products", links: [["ALIA Identity","/products"],["ALIA Routing","/products"],["ALIA Checkout","/products"],["ALIA Trust","/trust"],["ALIA Open Banking","/products"],["ALIA Fraud","/fraud"]] },
-  { title: "Solutions", links: [["Banks","/banks"],["Merchants","/merchants"],["Government","/government"],["Developers","/developers"],["Marketplace","/marketplace"],["Partners","/partners"]] },
-  { title: "Resources", links: [["Documentation","/docs"],["Status","/status"],["Security","/security"],["Compliance","/compliance"],["Pricing","/pricing"],["Changelog","/docs"]] },
-  { title: "Company", links: [["About","/careers"],["Careers","/careers"],["Press","/careers"],["Legal","/compliance"],["Contact","/banks"]] },
+  { title: "Products", links: [["ALIA Identity","/products"],["ALIA Routing","/products"],["ALIA Checkout","/products"],["ALIA Issuing","/issuing"],["ALIA Open Banking","/products"],["ALIA Fraud","/fraud"]] },
+  { title: "Solutions", links: [["Banks","/banks"],["Merchants","/merchants"],["Government","/government"],["Regulators","/regulator"],["Developers","/developers"],["Partners","/partners"]] },
+  { title: "Consoles", links: [["Network Ops","/noc"],["Executive","/executive"],["Trust Center","/trust-center"],["Fraud SOC","/fraud"],["Marketplace","/marketplace"],["Academy","/academy"]] },
+  { title: "Company", links: [["About","/about"],["Investor Center","/investor"],["Careers","/careers"],["Security","/security"],["Compliance","/compliance"],["Contact","/contact"]] },
 ];
 
 export function Footer() {
