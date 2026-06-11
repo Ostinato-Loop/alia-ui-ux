@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, ArrowRight, ShieldCheck, Network, Wallet, Building2, Landmark, Code2, Fingerprint, BadgeCheck, Receipt, ScanFace, Globe2, Database } from "lucide-react";
+import { ArrowUpRight, ArrowRight, ShieldCheck, Network, Wallet, Building2, Landmark, Code2, Fingerprint, BadgeCheck, Receipt, ScanFace, Globe2, Database, Languages, MapPin } from "lucide-react";
 import { Shell, SectionHeader } from "@/components/alia/Shell";
 import { NetworkMap } from "@/components/alia/NetworkMap";
 import { FeatureCard, StatTile } from "@/components/alia/Card";
@@ -24,10 +24,12 @@ function Landing() {
       <Hero />
       <Ticker />
       <LogosStrip />
+      <MarketsBand />
       <Pillars />
       <ProductsGrid />
       <DeveloperBand />
       <SegmentsBand />
+      <LanguageBand />
       <TrustBand />
       <CTA />
     </Shell>
@@ -39,6 +41,7 @@ function Hero() {
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 radial-spot" />
       <div className="absolute inset-0 grid-bg opacity-60" />
+      <div className="absolute inset-0 adinkra-bg opacity-[0.07]" aria-hidden />
       <div className="container-page relative grid gap-14 py-20 md:py-28 lg:grid-cols-[1.1fr_1fr] lg:py-32">
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-hairline bg-surface/60 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
@@ -52,6 +55,12 @@ function Hero() {
           <p className="mt-6 max-w-xl text-base text-muted-foreground md:text-lg">
             Send, verify, authorize, route and build financial experiences using identities instead of account numbers. One network, every bank, every wallet, every government — across the continent.
           </p>
+          <div className="mt-6 flex flex-wrap items-center gap-1.5 font-mono text-[10.5px] uppercase tracking-[0.18em] text-muted-foreground">
+            <Languages className="h-3.5 w-3.5 text-signal" />
+            {["English","Français","العربية","Português","Kiswahili","Hausa","Amharic","Yorùbá"].map((l) => (
+              <span key={l} className="rounded border border-hairline bg-surface/40 px-2 py-1">{l}</span>
+            ))}
+          </div>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link to="/banks" className="inline-flex items-center gap-1.5 rounded-md bg-signal px-4 py-2.5 text-sm font-medium text-signal-foreground hover:opacity-90">
               Request Bank Partnership <ArrowUpRight className="h-4 w-4" />
@@ -66,7 +75,7 @@ function Hero() {
           <div className="mt-10 grid grid-cols-3 gap-4 max-w-md">
             <KPI value="99.997%" label="Network uptime" />
             <KPI value="<140ms" label="Resolution p95" />
-            <KPI value="24M+" label="Identities" />
+            <KPI value="42.8M" label="African identities" />
           </div>
         </div>
         <div className="relative">
@@ -96,20 +105,97 @@ function KPI({ value, label }: { value: string; label: string }) {
 }
 
 function LogosStrip() {
-  const logos = ["Stanbic IBTC", "GTBank", "Equity Bank", "KCB", "Access", "Flutterwave", "MTN MoMo", "Paystack", "KRA", "FIRS", "M-Pesa", "Standard Bank"];
+  const logos: [string, string][] = [
+    ["Stanbic IBTC","NG"], ["GTBank","NG"], ["Access","NG"], ["Flutterwave","NG"],
+    ["Equity Bank","KE"], ["KCB","KE"], ["M-Pesa","KE"], ["Safaricom","KE"],
+    ["GCB Bank","GH"], ["MTN MoMo","GH"], ["Standard Bank","ZA"], ["Capitec","ZA"],
+    ["KRA","KE"], ["FIRS","NG"], ["CBE","EG"], ["BCEAO","XOF"],
+  ];
   return (
     <div className="border-b border-hairline">
       <div className="container-page py-10">
-        <div className="text-center text-[11px] uppercase tracking-[0.24em] text-muted-foreground">Powering institutions across 14 African markets</div>
-        <div className="mt-6 grid grid-cols-3 gap-x-4 gap-y-3 sm:grid-cols-4 md:grid-cols-6">
-          {logos.map((l) => (
-            <div key={l} className="flex h-10 items-center justify-center rounded-md border border-hairline bg-surface/40 px-3 font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-              {l}
+        <div className="text-center text-[11px] uppercase tracking-[0.24em] text-muted-foreground">Trusted by institutions, regulators and operators across 14 African markets</div>
+        <div className="mt-6 grid grid-cols-2 gap-x-3 gap-y-3 sm:grid-cols-4 md:grid-cols-8">
+          {logos.map(([l, cc]) => (
+            <div key={l} className="flex h-11 items-center justify-between gap-2 rounded-md border border-hairline bg-surface/40 px-3 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+              <span className="truncate text-foreground/85">{l}</span>
+              <span className="shrink-0 rounded bg-background/80 px-1.5 py-0.5 text-[9px] tracking-[0.18em] text-muted-foreground">{cc}</span>
             </div>
           ))}
         </div>
       </div>
     </div>
+  );
+}
+
+function MarketsBand() {
+  const markets: [string, string, string, string][] = [
+    ["Nigeria","NG","18.4M","Live"],
+    ["Kenya","KE","8.1M","Live"],
+    ["Ghana","GH","4.2M","Live"],
+    ["South Africa","ZA","6.8M","Live"],
+    ["Rwanda","RW","1.2M","Live"],
+    ["Côte d'Ivoire","CI","1.4M","Pilot"],
+    ["Egypt","EG","2.1M","Pilot"],
+    ["Senegal","SN","0.9M","Pilot"],
+    ["Tanzania","TZ","1.1M","Pilot"],
+    ["Uganda","UG","0.8M","Pilot"],
+    ["Ethiopia","ET","0.6M","Pilot"],
+    ["Morocco","MA","0.5M","Pilot"],
+  ];
+  return (
+    <section className="border-b border-hairline bg-surface/20">
+      <div className="container-page py-14">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <div className="font-mono text-[11px] uppercase tracking-[0.24em] text-signal"><MapPin className="-mt-0.5 inline h-3 w-3" /> Continent footprint</div>
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">14 markets. One network.</h2>
+          </div>
+          <div className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">Live · Q2 2026</div>
+        </div>
+        <div className="mt-6 grid gap-px overflow-hidden rounded-xl border border-hairline bg-hairline sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+          {markets.map(([n, cc, ids, s]) => (
+            <div key={cc} className="flex flex-col gap-1 bg-background p-3">
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{cc}</span>
+                <span className={`rounded px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wider ${s === "Live" ? "bg-success/10 text-success" : "bg-warning/10 text-warning"}`}>{s}</span>
+              </div>
+              <div className="text-sm font-medium text-foreground">{n}</div>
+              <div className="font-mono text-[11px] text-muted-foreground">{ids} identities</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LanguageBand() {
+  const langs: [string, string, string][] = [
+    ["English",   "Send money to @ada.ng",            "EN"],
+    ["Français",  "Envoyer à @ada.ci",                 "FR"],
+    ["العربية",   "أرسل إلى ‎@ada.eg",                 "AR"],
+    ["Português", "Enviar para @ada.ao",               "PT"],
+    ["Kiswahili", "Tuma kwa @ada.ke",                  "SW"],
+    ["Hausa",     "Aika wa @ada.ng",                   "HA"],
+  ];
+  return (
+    <section className="border-t border-hairline">
+      <div className="container-page py-20 md:py-24">
+        <SectionHeader eyebrow="Localised by default" title="Eight African languages. One identity layer." description="Every surface — identity, checkout, consent, fraud notices, regulator reports — speaks the language of the citizen in front of it." />
+        <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+          {langs.map(([name, sample, code]) => (
+            <div key={code} className="rounded-xl border border-hairline bg-surface/40 p-5">
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium text-foreground">{name}</span>
+                <span className="rounded border border-hairline px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{code}</span>
+              </div>
+              <div className="mt-3 font-mono text-sm text-muted-foreground" dir={code === "AR" ? "rtl" : "ltr"}>{sample}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
