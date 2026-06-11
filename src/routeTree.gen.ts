@@ -9,8 +9,104 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TrustRouteImport } from './routes/trust'
+import { Route as StatusRouteImport } from './routes/status'
+import { Route as SecurityRouteImport } from './routes/security'
+import { Route as ProductsRouteImport } from './routes/products'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PartnersRouteImport } from './routes/partners'
+import { Route as MerchantsRouteImport } from './routes/merchants'
+import { Route as MarketplaceRouteImport } from './routes/marketplace'
+import { Route as GovernmentRouteImport } from './routes/government'
+import { Route as FraudRouteImport } from './routes/fraud'
+import { Route as DocsRouteImport } from './routes/docs'
+import { Route as DevelopersRouteImport } from './routes/developers'
+import { Route as ComplianceRouteImport } from './routes/compliance'
+import { Route as CareersRouteImport } from './routes/careers'
+import { Route as BanksRouteImport } from './routes/banks'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TrustRoute = TrustRouteImport.update({
+  id: '/trust',
+  path: '/trust',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatusRoute = StatusRouteImport.update({
+  id: '/status',
+  path: '/status',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SecurityRoute = SecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsRoute = ProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MerchantsRoute = MerchantsRouteImport.update({
+  id: '/merchants',
+  path: '/merchants',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketplaceRoute = MarketplaceRouteImport.update({
+  id: '/marketplace',
+  path: '/marketplace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GovernmentRoute = GovernmentRouteImport.update({
+  id: '/government',
+  path: '/government',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FraudRoute = FraudRouteImport.update({
+  id: '/fraud',
+  path: '/fraud',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocsRoute = DocsRouteImport.update({
+  id: '/docs',
+  path: '/docs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevelopersRoute = DevelopersRouteImport.update({
+  id: '/developers',
+  path: '/developers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComplianceRoute = ComplianceRouteImport.update({
+  id: '/compliance',
+  path: '/compliance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BanksRoute = BanksRouteImport.update({
+  id: '/banks',
+  path: '/banks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +115,256 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/banks': typeof BanksRoute
+  '/careers': typeof CareersRoute
+  '/compliance': typeof ComplianceRoute
+  '/developers': typeof DevelopersRoute
+  '/docs': typeof DocsRoute
+  '/fraud': typeof FraudRoute
+  '/government': typeof GovernmentRoute
+  '/marketplace': typeof MarketplaceRoute
+  '/merchants': typeof MerchantsRoute
+  '/partners': typeof PartnersRoute
+  '/pricing': typeof PricingRoute
+  '/products': typeof ProductsRoute
+  '/security': typeof SecurityRoute
+  '/status': typeof StatusRoute
+  '/trust': typeof TrustRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/banks': typeof BanksRoute
+  '/careers': typeof CareersRoute
+  '/compliance': typeof ComplianceRoute
+  '/developers': typeof DevelopersRoute
+  '/docs': typeof DocsRoute
+  '/fraud': typeof FraudRoute
+  '/government': typeof GovernmentRoute
+  '/marketplace': typeof MarketplaceRoute
+  '/merchants': typeof MerchantsRoute
+  '/partners': typeof PartnersRoute
+  '/pricing': typeof PricingRoute
+  '/products': typeof ProductsRoute
+  '/security': typeof SecurityRoute
+  '/status': typeof StatusRoute
+  '/trust': typeof TrustRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/banks': typeof BanksRoute
+  '/careers': typeof CareersRoute
+  '/compliance': typeof ComplianceRoute
+  '/developers': typeof DevelopersRoute
+  '/docs': typeof DocsRoute
+  '/fraud': typeof FraudRoute
+  '/government': typeof GovernmentRoute
+  '/marketplace': typeof MarketplaceRoute
+  '/merchants': typeof MerchantsRoute
+  '/partners': typeof PartnersRoute
+  '/pricing': typeof PricingRoute
+  '/products': typeof ProductsRoute
+  '/security': typeof SecurityRoute
+  '/status': typeof StatusRoute
+  '/trust': typeof TrustRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/banks'
+    | '/careers'
+    | '/compliance'
+    | '/developers'
+    | '/docs'
+    | '/fraud'
+    | '/government'
+    | '/marketplace'
+    | '/merchants'
+    | '/partners'
+    | '/pricing'
+    | '/products'
+    | '/security'
+    | '/status'
+    | '/trust'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/admin'
+    | '/banks'
+    | '/careers'
+    | '/compliance'
+    | '/developers'
+    | '/docs'
+    | '/fraud'
+    | '/government'
+    | '/marketplace'
+    | '/merchants'
+    | '/partners'
+    | '/pricing'
+    | '/products'
+    | '/security'
+    | '/status'
+    | '/trust'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/banks'
+    | '/careers'
+    | '/compliance'
+    | '/developers'
+    | '/docs'
+    | '/fraud'
+    | '/government'
+    | '/marketplace'
+    | '/merchants'
+    | '/partners'
+    | '/pricing'
+    | '/products'
+    | '/security'
+    | '/status'
+    | '/trust'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  BanksRoute: typeof BanksRoute
+  CareersRoute: typeof CareersRoute
+  ComplianceRoute: typeof ComplianceRoute
+  DevelopersRoute: typeof DevelopersRoute
+  DocsRoute: typeof DocsRoute
+  FraudRoute: typeof FraudRoute
+  GovernmentRoute: typeof GovernmentRoute
+  MarketplaceRoute: typeof MarketplaceRoute
+  MerchantsRoute: typeof MerchantsRoute
+  PartnersRoute: typeof PartnersRoute
+  PricingRoute: typeof PricingRoute
+  ProductsRoute: typeof ProductsRoute
+  SecurityRoute: typeof SecurityRoute
+  StatusRoute: typeof StatusRoute
+  TrustRoute: typeof TrustRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/trust': {
+      id: '/trust'
+      path: '/trust'
+      fullPath: '/trust'
+      preLoaderRoute: typeof TrustRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/status': {
+      id: '/status'
+      path: '/status'
+      fullPath: '/status'
+      preLoaderRoute: typeof StatusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/security': {
+      id: '/security'
+      path: '/security'
+      fullPath: '/security'
+      preLoaderRoute: typeof SecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products': {
+      id: '/products'
+      path: '/products'
+      fullPath: '/products'
+      preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/merchants': {
+      id: '/merchants'
+      path: '/merchants'
+      fullPath: '/merchants'
+      preLoaderRoute: typeof MerchantsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketplace': {
+      id: '/marketplace'
+      path: '/marketplace'
+      fullPath: '/marketplace'
+      preLoaderRoute: typeof MarketplaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/government': {
+      id: '/government'
+      path: '/government'
+      fullPath: '/government'
+      preLoaderRoute: typeof GovernmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fraud': {
+      id: '/fraud'
+      path: '/fraud'
+      fullPath: '/fraud'
+      preLoaderRoute: typeof FraudRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/docs': {
+      id: '/docs'
+      path: '/docs'
+      fullPath: '/docs'
+      preLoaderRoute: typeof DocsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/developers': {
+      id: '/developers'
+      path: '/developers'
+      fullPath: '/developers'
+      preLoaderRoute: typeof DevelopersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compliance': {
+      id: '/compliance'
+      path: '/compliance'
+      fullPath: '/compliance'
+      preLoaderRoute: typeof ComplianceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/banks': {
+      id: '/banks'
+      path: '/banks'
+      fullPath: '/banks'
+      preLoaderRoute: typeof BanksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +377,22 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  BanksRoute: BanksRoute,
+  CareersRoute: CareersRoute,
+  ComplianceRoute: ComplianceRoute,
+  DevelopersRoute: DevelopersRoute,
+  DocsRoute: DocsRoute,
+  FraudRoute: FraudRoute,
+  GovernmentRoute: GovernmentRoute,
+  MarketplaceRoute: MarketplaceRoute,
+  MerchantsRoute: MerchantsRoute,
+  PartnersRoute: PartnersRoute,
+  PricingRoute: PricingRoute,
+  ProductsRoute: ProductsRoute,
+  SecurityRoute: SecurityRoute,
+  StatusRoute: StatusRoute,
+  TrustRoute: TrustRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
