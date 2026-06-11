@@ -182,3 +182,15 @@
 
 @keyframes alia-ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .alia-ticker { animation: alia-ticker 40s linear infinite; }
+@keyframes alia-ticker-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+.alia-ticker-rev { animation: alia-ticker-rev 55s linear infinite; }
+
+/* Soft adinkra-inspired geometric watermark (subtle, enterprise) */
+@utility adinkra-bg {
+  background-image:
+    radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--color-signal) 14%, transparent) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 80% 70%, color-mix(in oklab, white 10%, transparent) 0 1px, transparent 1.5px),
+    repeating-linear-gradient(60deg, transparent 0 22px, color-mix(in oklab, white 3%, transparent) 22px 23px),
+    repeating-linear-gradient(-60deg, transparent 0 22px, color-mix(in oklab, white 3%, transparent) 22px 23px);
+  background-size: 120px 120px, 140px 140px, auto, auto;
+}
