@@ -34,22 +34,13 @@ jobs:
       - name: Show build output structure
         run: |
           echo "=== root dirs ==="
-          ls -la | grep "^d"
+          ls -la | grep "^d" || true
           for d in .output dist out build; do
-            [ -d "$d" ] && echo "=== $d/ ===" && find "$d" -maxdepth 2 | head -20 || true
+            [ -d "$d" ] && echo "=== $d/ ===" && find "$d" -maxdepth 3 | head -30 || true
           done
 
       - name: Install Wrangler
         run: npm install -g wrangler@latest
-
-      - name: Create CF Pages project (idempotent)
-        run: |
-          wrangler pages project create alia-ui \
-            --production-branch=main 2>&1 | grep -v "already exists" || true
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        continue-on-error: true
 
       - name: Deploy to Cloudflare Pages
         run: |
@@ -66,11 +57,26 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-      - name: Add alia.rald.cloud custom domain (idempotent)
+      - name: Auto-detect CF account ID
+        id: cf
         run: |
-          wrangler pages domain add alia.rald.cloud \
-            --project-name=alia-ui 2>&1 | grep -v "already exists" || true
+          ACCOUNT_ID=$(curl -s \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts" \
+            | jq -r '.result[0].id')
+          echo "account_id=$ACCOUNT_ID" >> $GITHUB_OUTPUT
+          echo "Account: ${ACCOUNT_ID:0:6}..."
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Add alia.rald.cloud custom domain via CF API
+        run: |
+          RESP=$(curl -s -X POST \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            "https://api.cloudflare.com/client/v4/accounts/${{ steps.cf.outputs.account_id }}/pages/projects/alia-ui/domains" \
+            -d '{"name":"alia.rald.cloud"}')
+          echo "$RESP" | jq '.'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         continue-on-error: true
